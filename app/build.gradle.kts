@@ -50,5 +50,8 @@ dependencies {
     implementation(libs.spark)
     // Koin DI
     implementation(libs.koin.android)
+    // Swipe
+    implementation(libs.androidx.swiperefreshlayout)
+
 
 }
