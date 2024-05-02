@@ -1,6 +1,7 @@
 package me.nasiri.coinmaster.data.remote.api
 
-interface ApiService {
+import me.nasiri.coinmaster.domain.model.CoinsData
 
-    suspend fun getAllCoins()
+interface ApiService {
+    suspend fun getAllCoins(): CoinsData
 }

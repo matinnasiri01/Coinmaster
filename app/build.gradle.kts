@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -10,7 +11,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
-    
+
     defaultConfig {
         applicationId = "me.nasiri.coinmaster"
         minSdk = 24
