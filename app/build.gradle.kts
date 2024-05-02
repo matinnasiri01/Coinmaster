@@ -53,6 +53,8 @@ dependencies {
 
     implementation(libs.koin.android)
     implementation(libs.coil)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 
     implementation(libs.spark)
     implementation(libs.androidx.swiperefreshlayout)
