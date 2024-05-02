@@ -52,6 +52,8 @@ dependencies {
     implementation(libs.koin.android)
     // Swipe
     implementation(libs.androidx.swiperefreshlayout)
+    // Shimmer
+    implementation(libs.shimmer)
 
 
 }
