@@ -2,6 +2,7 @@ package me.nasiri.coinmaster.di
 
 
 import android.widget.ImageView
+import me.nasiri.coinmaster.domain.model.NewsData
 
 
 interface Services {
@@ -22,7 +23,7 @@ interface Services {
     }
 
     interface RemoteRepo {
-        suspend fun getgNews()
+        suspend fun getNews(): NewsData
         suspend fun getCoins()
     }
 

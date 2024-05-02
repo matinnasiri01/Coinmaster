@@ -53,6 +53,8 @@ dependencies {
 
 
     implementation(libs.koin.android)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.coil)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)

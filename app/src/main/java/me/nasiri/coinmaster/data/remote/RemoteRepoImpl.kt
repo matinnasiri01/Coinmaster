@@ -1,3 +1,14 @@
 package me.nasiri.coinmaster.data.remote
 
-class RemoteRepoImpl
+import me.nasiri.coinmaster.data.remote.api.ApiService
+import me.nasiri.coinmaster.di.Services
+import me.nasiri.coinmaster.domain.model.NewsData
+
+class RemoteRepoImpl(val api: ApiService) : Services.RemoteRepo {
+    override suspend fun getNews(): NewsData =
+        api.getNews()
+
+    override suspend fun getCoins() {
+        TODO("Not yet implemented")
+    }
+}

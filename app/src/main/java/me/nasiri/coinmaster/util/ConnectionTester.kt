@@ -5,7 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import me.nasiri.coinmaster.di.Services
 
-class NetworkChecker(private val context: Context) : Services.NetworkConnectionStatus {
+class ConnectionTester(private val context: Context) : Services.NetworkConnectionStatus {
     private val isInternetConnected: Boolean
         get() {
             var result = false
