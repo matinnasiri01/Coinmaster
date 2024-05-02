@@ -45,4 +45,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Spark show chart
+    implementation(libs.spark)
+    // Koin DI
+    implementation(libs.koin.android)
+
 }
