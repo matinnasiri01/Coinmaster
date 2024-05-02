@@ -7,6 +7,10 @@ android {
     namespace = "me.nasiri.coinmaster"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+    }
+    
     defaultConfig {
         applicationId = "me.nasiri.coinmaster"
         minSdk = 24
@@ -46,14 +50,11 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // Spark show chart
-    implementation(libs.spark)
-    // Koin DI
+
     implementation(libs.koin.android)
-    // Swipe
+    implementation(libs.coil)
+
+    implementation(libs.spark)
     implementation(libs.androidx.swiperefreshlayout)
-    // Shimmer
     implementation(libs.shimmer)
-
-
 }
