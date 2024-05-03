@@ -1,7 +1,9 @@
 package me.nasiri.coinmaster.di
 
+import me.nasiri.coinmaster.data.local.LocalRepoImpl
 import me.nasiri.coinmaster.data.remote.RemoteRepoImpl
 import me.nasiri.coinmaster.data.remote.api.ApiService
+import me.nasiri.coinmaster.domain.repository.MainRepo
 import me.nasiri.coinmaster.ui.coin.CoinViewModel
 import me.nasiri.coinmaster.ui.market.MarketViewModel
 import me.nasiri.coinmaster.util.CoilImageLoader
@@ -16,16 +18,17 @@ val CenterModule = module {
 
     single<Services.NetworkConnectionStatus> { ConnectionTester(get()) }
     single<Services.ImageLoader> { CoilImageLoader() }
-    single<Retrofit> {
+
+    single<ApiService> {
         Retrofit
             .Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+            .create(ApiService::class.java)
     }
-    single<ApiService> { get<Retrofit>().create(ApiService::class.java) }
 
-    single<Services.RemoteRepo> { RemoteRepoImpl(get()) }
+    single<Services.CenterRepo> { MainRepo(LocalRepoImpl(), RemoteRepoImpl(get())) }
 
 
     viewModel { MarketViewModel(get()) }

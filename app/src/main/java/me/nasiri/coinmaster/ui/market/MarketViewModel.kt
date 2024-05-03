@@ -1,19 +1,15 @@
 package me.nasiri.coinmaster.ui.market
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import me.nasiri.coinmaster.di.Services
-import me.nasiri.coinmaster.util.Constans.TAG
+import me.nasiri.coinmaster.domain.model.News
 
-class MarketViewModel(private val remoteRepo: Services.RemoteRepo) : ViewModel() {
-    fun send() {
+class MarketViewModel(private val centerRepo: Services.CenterRepo) : ViewModel() {
+    fun getNews(onReceived: (List<News>) -> Unit) {
         viewModelScope.launch {
-            Log.e(
-                TAG,
-                remoteRepo.getNews().toString()
-            )
+            onReceived(centerRepo.getNews())
         }
     }
 }

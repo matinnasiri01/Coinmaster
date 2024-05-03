@@ -15,7 +15,7 @@ data class NewsData(
     @SerializedName("RateLimit")
     val rateLimit: RateLimit,
     @SerializedName("Type")
-    val type: Int
+    val type: Int,
 ) {
     data class Data(
         @SerializedName("body")
@@ -45,7 +45,7 @@ data class NewsData(
         @SerializedName("upvotes")
         val upvotes: String,
         @SerializedName("url")
-        val url: String
+        val url: String,
     ) {
         data class SourceInfo(
             @SerializedName("img")
@@ -53,9 +53,11 @@ data class NewsData(
             @SerializedName("lang")
             val lang: String,
             @SerializedName("name")
-            val name: String
+            val name: String,
         )
     }
-
     class RateLimit
 }
+
+fun NewsData.change(): List<News> = this.data.map { News(title = it.title, url = it.url) }
+data class News(val title: String, val url: String)

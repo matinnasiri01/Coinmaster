@@ -3,6 +3,7 @@ package me.nasiri.coinmaster.ui.market
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import me.nasiri.coinmaster.databinding.ActivityMarketBinding
+import me.nasiri.coinmaster.util.showToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MarketActivity : AppCompatActivity() {
@@ -13,7 +14,6 @@ class MarketActivity : AppCompatActivity() {
         binding = ActivityMarketBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        view.send()
 
     }
 }
