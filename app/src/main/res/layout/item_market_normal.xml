@@ -43,7 +43,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtTaghir"
+        android:id="@+id/txtChanges"
         style="@style/CoinBitText.Body1Alternate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

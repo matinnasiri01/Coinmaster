@@ -19,8 +19,9 @@ data class CoinsData(
     @SerializedName("SponsoredData")
     val sponsoredData: List<Any>,
     @SerializedName("Type")
-    val type: Int
+    val type: Int,
 ) {
+
     @Parcelize
     data class Data(
 
@@ -31,9 +32,9 @@ data class CoinsData(
         val dISPLAY: DISPLAY,
 
         @SerializedName("RAW")
-        val rAW: RAW
+        val rAW: RAW,
 
-    ) :Parcelable  {
+        ) : Parcelable {
 
         @Parcelize
         data class CoinInfo(
@@ -68,14 +69,14 @@ data class CoinsData(
             @SerializedName("Type")
             val type: Int,
             @SerializedName("Url")
-            val url: String
-        ) :Parcelable {
+            val url: String,
+        ) : Parcelable {
 
             @Parcelize
             data class Rating(
                 @SerializedName("Weiss")
-                val weiss: Weiss
-            ) :Parcelable {
+                val weiss: Weiss,
+            ) : Parcelable {
 
                 @Parcelize
                 data class Weiss(
@@ -84,16 +85,16 @@ data class CoinsData(
                     @SerializedName("Rating")
                     val rating: String,
                     @SerializedName("TechnologyAdoptionRating")
-                    val technologyAdoptionRating: String
-                ) :Parcelable
+                    val technologyAdoptionRating: String,
+                ) : Parcelable
             }
         }
 
         @Parcelize
         data class DISPLAY(
             @SerializedName("USD")
-            val uSD: USD
-        ) :Parcelable {
+            val uSD: USD,
+        ) : Parcelable {
 
             @Parcelize
             data class USD(
@@ -179,15 +180,15 @@ data class CoinsData(
                 @SerializedName("VOLUMEHOUR")
                 val vOLUMEHOUR: String,
                 @SerializedName("VOLUMEHOURTO")
-                val vOLUMEHOURTO: String
-            ) :Parcelable
+                val vOLUMEHOURTO: String,
+            ) : Parcelable
         }
 
         @Parcelize
         data class RAW(
             @SerializedName("USD")
-            val uSD: USD
-        ) :Parcelable {
+            val uSD: USD,
+        ) : Parcelable {
 
             @Parcelize
             data class USD(
@@ -283,15 +284,22 @@ data class CoinsData(
                 @SerializedName("VOLUMEHOUR")
                 val vOLUMEHOUR: Double,
                 @SerializedName("VOLUMEHOURTO")
-                val vOLUMEHOURTO: Double
-            ) :Parcelable
+                val vOLUMEHOURTO: Double,
+            ) : Parcelable
         }
     }
 
     data class MetaData(
         @SerializedName("Count")
-        val count: Int
+        val count: Int,
     )
 
     class RateLimit
+}
+
+
+fun CoinsData.lst(): List<String> {
+    return this.data.map {
+        it.coinInfo.name
+    }
 }

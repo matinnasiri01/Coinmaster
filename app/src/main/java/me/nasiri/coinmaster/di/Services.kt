@@ -32,8 +32,9 @@ interface Services {
 
     interface CenterRepo {
         suspend fun getNews(): List<News>
-        suspend fun getCoins()
+        suspend fun getCoins(): CoinsData
         suspend fun updateCoins()
         suspend fun updateNews()
+        suspend fun findAboutByName()
     }
 }

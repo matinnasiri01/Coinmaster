@@ -59,5 +59,5 @@ data class NewsData(
     class RateLimit
 }
 
-fun NewsData.change(): List<News> = this.data.map { News(title = it.title, url = it.url) }
+fun NewsData.toList(): List<News> = this.data.map { News(title = it.title, url = it.url) }
 data class News(val title: String, val url: String)

@@ -49,3 +49,5 @@ data class ChartData(
         val volumeto: Double,
     )
 }
+
+fun ChartData.listOfClosePoints(): List<Double> = this.data.map { it.close }
