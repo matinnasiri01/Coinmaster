@@ -1,10 +1,19 @@
 package me.nasiri.coinmaster.data.local.database
 
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import me.nasiri.coinmaster.domain.model.CusNews
+import me.nasiri.coinmaster.util.Constans.TableNews
+
+
+@Dao
 interface NewsDao {
 
+    @Query("SELECT * FROM $TableNews")
+    suspend fun getNews(): List<CusNews>
 
-    /* todo get All news from local database*/
-    suspend fun getAllNews()
-
-    suspend fun insertAllNews()
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertNews(list: List<CusNews>)
 }

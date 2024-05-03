@@ -3,7 +3,7 @@ package me.nasiri.coinmaster.di
 
 import android.widget.ImageView
 import me.nasiri.coinmaster.domain.model.CoinsData
-import me.nasiri.coinmaster.domain.model.News
+import me.nasiri.coinmaster.domain.model.CusNews
 import me.nasiri.coinmaster.domain.model.NewsData
 
 
@@ -31,7 +31,7 @@ interface Services {
     }
 
     interface CenterRepo {
-        suspend fun getNews(): List<News>
+        suspend fun getNews(): List<CusNews>
         suspend fun getCoins(): CoinsData
         suspend fun updateCoins()
         suspend fun updateNews()

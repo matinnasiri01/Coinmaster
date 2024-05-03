@@ -2,8 +2,11 @@ package me.nasiri.coinmaster.domain.model
 
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
+import me.nasiri.coinmaster.util.Constans.TableCoin
 
 data class CoinsData(
     @SerializedName("Data")
@@ -298,29 +301,42 @@ data class CoinsData(
 }
 
 
-fun CoinsData.changeType(): List<FullCoinData> {
+fun CoinsData.fConvert(): List<FCoinData> {
     return this.data.map { coin ->
-        FullCoinData(
-            id = coin.coinInfo.id.toLong(),
+        FCoinData(
             img = coin.coinInfo.imageUrl,
             coinName = coin.coinInfo.name,
-            // change = coin.dISPLAY.uSD.cHANGEPCTHOUR,
-            //price = coin.dISPLAY.uSD.pRICE,
+            change = coin.dISPLAY.uSD.cHANGEPCTHOUR,
+            price = coin.dISPLAY.uSD.pRICE,
             fullName = coin.coinInfo.fullName,
-            // open = coin.dISPLAY.uSD.oPEN24HOUR,
-            //todayHigh = coin.dISPLAY.uSD.hIGH24HOUR,
-            // todayLow = coin.dISPLAY.uSD.lOW24HOUR,
-            // changeToday = coin.dISPLAY.uSD.cHANGE24HOUR,
+            open = coin.dISPLAY.uSD.oPEN24HOUR,
+            todayHigh = coin.dISPLAY.uSD.hIGH24HOUR,
+            todayLow = coin.dISPLAY.uSD.lOW24HOUR,
+            changeToday = coin.dISPLAY.uSD.cHANGE24HOUR,
             algorithm = coin.coinInfo.algorithm,
-            // totalVolume = coin.dISPLAY.uSD.tOTALVOLUME24H,
-            // marketCap = coin.dISPLAY.uSD.mKTCAP,
-            // supply = coin.dISPLAY.uSD.sUPPLY
+            totalVolume = coin.dISPLAY.uSD.tOTALVOLUME24H,
+            marketCap = coin.dISPLAY.uSD.mKTCAP,
+            supply = coin.dISPLAY.uSD.sUPPLY
         )
     }
 }
 
+fun List<FCoinData>.convertSCoinData(): List<SCoinData> {
+    return this.map { fCoin ->
+        SCoinData(
+            id = fCoin.id,
+            img = fCoin.img,
+            coinName = fCoin.coinName,
+            change = fCoin.change,
+            price = fCoin.price,
+            marketCap = fCoin.marketCap,
+        )
+    }
+}
 
-data class FullCoinData(
+@Entity(tableName = TableCoin)
+data class FCoinData(
+    @PrimaryKey(autoGenerate = true)
     val id: Long? = null,
     val img: String? = null,
     val coinName: String? = null,
@@ -337,17 +353,7 @@ data class FullCoinData(
     val supply: String? = null,
 )
 
-fun FullCoinData.keepLess(): LessCoinData = LessCoinData(
-    id = this.id,
-    img = this.img,
-    coinName = this.coinName,
-    change = this.change,
-    price = this.price,
-    marketCap = this.marketCap,
-)
-
-
-data class LessCoinData(
+data class SCoinData(
     val id: Long? = null,
     val img: String? = null,
     val coinName: String? = null,

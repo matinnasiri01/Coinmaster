@@ -1,8 +1,11 @@
 package me.nasiri.coinmaster.data.local
 
+import me.nasiri.coinmaster.data.local.database.CoinsDao
+import me.nasiri.coinmaster.data.local.database.NewsDao
 import me.nasiri.coinmaster.di.Services
 
-class LocalRepoImpl:Services.LocalRepo {
+class LocalRepoImpl(private val newsDao: NewsDao, private val coinsDao: CoinsDao) :
+    Services.LocalRepo {
     override suspend fun getNews() {
         TODO("Not yet implemented")
     }

@@ -6,15 +6,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import me.nasiri.coinmaster.di.Services
-import me.nasiri.coinmaster.domain.model.changeType
+import me.nasiri.coinmaster.domain.model.fConvert
 import me.nasiri.coinmaster.util.Constans.TAG
 
 
-class MarketViewModel(private val centerRepo: Services.CenterRepo) : ViewModel(){
+class MarketViewModel(private val centerRepo: Services.CenterRepo) : ViewModel() {
 
-    fun test(){
+    fun test() {
         viewModelScope.launch {
-            Log.i(TAG,centerRepo.getCoins().changeType().toString())
+            Log.v(TAG, centerRepo.getCoins().fConvert().toString())
         }
     }
 }
