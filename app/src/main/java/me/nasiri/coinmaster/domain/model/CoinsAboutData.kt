@@ -50,7 +50,7 @@ class CoinsAboutData : ArrayList<CoinsAboutData.CoinsAboutDataItem>() {
     }
 }
 
-fun CoinsAboutData.sort(): List<CoinAbout> {
+fun CoinsAboutData.sortDT(): List<CoinAbout> {
     return this.map { about ->
         CoinAbout(
             coinWebsite = about.info!!.web,

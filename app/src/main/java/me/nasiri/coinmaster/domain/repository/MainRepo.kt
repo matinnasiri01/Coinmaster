@@ -3,7 +3,6 @@ package me.nasiri.coinmaster.domain.repository
 import me.nasiri.coinmaster.di.Services
 import me.nasiri.coinmaster.domain.model.CoinsData
 import me.nasiri.coinmaster.domain.model.News
-import me.nasiri.coinmaster.domain.model.lst
 import me.nasiri.coinmaster.domain.model.toList
 
 class MainRepo(

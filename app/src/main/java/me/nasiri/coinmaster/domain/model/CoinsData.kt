@@ -298,8 +298,60 @@ data class CoinsData(
 }
 
 
-fun CoinsData.lst(): List<String> {
-    return this.data.map {
-        it.coinInfo.name
+fun CoinsData.changeType(): List<FullCoinData> {
+    return this.data.map { coin ->
+        FullCoinData(
+            id = coin.coinInfo.id.toLong(),
+            img = coin.coinInfo.imageUrl,
+            coinName = coin.coinInfo.name,
+            // change = coin.dISPLAY.uSD.cHANGEPCTHOUR,
+            //price = coin.dISPLAY.uSD.pRICE,
+            fullName = coin.coinInfo.fullName,
+            // open = coin.dISPLAY.uSD.oPEN24HOUR,
+            //todayHigh = coin.dISPLAY.uSD.hIGH24HOUR,
+            // todayLow = coin.dISPLAY.uSD.lOW24HOUR,
+            // changeToday = coin.dISPLAY.uSD.cHANGE24HOUR,
+            algorithm = coin.coinInfo.algorithm,
+            // totalVolume = coin.dISPLAY.uSD.tOTALVOLUME24H,
+            // marketCap = coin.dISPLAY.uSD.mKTCAP,
+            // supply = coin.dISPLAY.uSD.sUPPLY
+        )
     }
 }
+
+
+data class FullCoinData(
+    val id: Long? = null,
+    val img: String? = null,
+    val coinName: String? = null,
+    val change: String? = null,
+    val price: String? = null,
+    val fullName: String? = null,
+    val open: String? = null,
+    val todayHigh: String? = null,
+    val todayLow: String? = null,
+    val changeToday: String? = null,
+    val algorithm: String? = null,
+    val totalVolume: String? = null,
+    val marketCap: String? = null,
+    val supply: String? = null,
+)
+
+fun FullCoinData.keepLess(): LessCoinData = LessCoinData(
+    id = this.id,
+    img = this.img,
+    coinName = this.coinName,
+    change = this.change,
+    price = this.price,
+    marketCap = this.marketCap,
+)
+
+
+data class LessCoinData(
+    val id: Long? = null,
+    val img: String? = null,
+    val coinName: String? = null,
+    val change: String? = null,
+    val price: String? = null,
+    val marketCap: String? = null,
+)
