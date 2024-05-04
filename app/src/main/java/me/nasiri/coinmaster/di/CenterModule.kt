@@ -31,7 +31,7 @@ val CenterModule = module {
             .build()
             .create(ApiService::class.java)
     }
-    single {
+    single<CenterDatabase> {
         Room.databaseBuilder(
             androidContext(),
             CenterDatabase::class.java,
@@ -39,7 +39,16 @@ val CenterModule = module {
         ).build()
     }
 
-    single<Services.CenterRepo> { MainRepo(LocalRepoImpl(get(), get()), RemoteRepoImpl(get())) }
+    single<Services.CenterRepo> {
+        MainRepo(
+            LocalRepoImpl(
+                get<CenterDatabase>().newsDao,
+                get<CenterDatabase>().coinsDao
+            ),
+            RemoteRepoImpl(get()),
+            get<Services.NetworkConnectionStatus>()
+        )
+    }
 
 
     viewModel { MarketViewModel(get()) }

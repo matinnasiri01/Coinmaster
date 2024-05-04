@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 import me.nasiri.coinmaster.domain.model.CusNews
 import me.nasiri.coinmaster.util.Constans.TableNews
 
@@ -12,7 +13,7 @@ import me.nasiri.coinmaster.util.Constans.TableNews
 interface NewsDao {
 
     @Query("SELECT * FROM $TableNews")
-    suspend fun getNews(): List<CusNews>
+    fun getNews(): Flow<List<CusNews>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNews(list: List<CusNews>)

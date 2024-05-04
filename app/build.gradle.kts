@@ -53,6 +53,9 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
 
+
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.koin.android)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)

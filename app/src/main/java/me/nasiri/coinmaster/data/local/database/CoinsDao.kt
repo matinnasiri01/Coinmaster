@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 import me.nasiri.coinmaster.domain.model.FCoinData
 import me.nasiri.coinmaster.util.Constans.TableCoin
 
@@ -12,7 +13,7 @@ import me.nasiri.coinmaster.util.Constans.TableCoin
 interface CoinsDao {
 
     @Query("SELECT * FROM $TableCoin")
-    suspend fun getCoins(): List<FCoinData>
+    fun getCoins(): Flow<List<FCoinData>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCoins(list: List<FCoinData>)

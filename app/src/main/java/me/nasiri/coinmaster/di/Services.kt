@@ -2,9 +2,11 @@ package me.nasiri.coinmaster.di
 
 
 import android.widget.ImageView
-import me.nasiri.coinmaster.domain.model.CoinsData
+import androidx.lifecycle.LiveData
+import kotlinx.coroutines.flow.Flow
+import me.nasiri.coinmaster.domain.model.CoinAboutData
 import me.nasiri.coinmaster.domain.model.CusNews
-import me.nasiri.coinmaster.domain.model.NewsData
+import me.nasiri.coinmaster.domain.model.FCoinData
 
 
 interface Services {
@@ -17,24 +19,27 @@ interface Services {
     }
 
     interface LocalRepo {
-        suspend fun getNews()
-        suspend fun insertNews()
+        suspend fun getNews(): Flow<List<CusNews>>
+        suspend fun insertNews(list: List<CusNews>)
 
-        suspend fun getCoins()
-        suspend fun insertCoins()
+        suspend fun getCoins(): Flow<List<FCoinData>>
+        suspend fun insertCoins(list: List<FCoinData>)
     }
 
     interface RemoteRepo {
-        suspend fun getNews(): NewsData
-        suspend fun getCoins(): CoinsData
+        suspend fun getNews(): List<CusNews>
+        suspend fun getCoins(): List<FCoinData>
         suspend fun getChart()
     }
 
     interface CenterRepo {
-        suspend fun getNews(): List<CusNews>
-        suspend fun getCoins(): CoinsData
+        suspend fun getNews(): LiveData<List<CusNews>>
+        suspend fun getCoins(): LiveData<List<FCoinData>>
+        suspend fun refreshAll()
+
         suspend fun updateCoins()
         suspend fun updateNews()
-        suspend fun findAboutByName()
+        suspend fun findFullCoinDataByName(id: Long): FCoinData
+        suspend fun findAboutByName(id: Long): CoinAboutData
     }
 }

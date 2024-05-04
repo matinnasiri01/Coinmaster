@@ -63,7 +63,7 @@ data class NewsData(
     class RateLimit
 }
 
-fun NewsData.toList(): List<CusNews> =
+fun NewsData.lConvert(): List<CusNews> =
     this.data.map { CusNews(title = it.title, url = it.url, id = it.id.toLong()) }
 
 @Entity(tableName = TableNews)

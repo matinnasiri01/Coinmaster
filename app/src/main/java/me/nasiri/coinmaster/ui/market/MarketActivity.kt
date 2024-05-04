@@ -7,13 +7,17 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MarketActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMarketBinding
-    val view by viewModel<MarketViewModel>()
+    private val view by viewModel<MarketViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMarketBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        initNews()
 
-        view.test()
+
+    }
+
+    private fun initNews() {
 
     }
 }
