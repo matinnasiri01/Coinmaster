@@ -1,4 +1,4 @@
-package me.nasiri.coinmaster.util
+package me.nasiri.coinmaster.domain.util
 
 import android.content.Context
 import android.widget.Toast

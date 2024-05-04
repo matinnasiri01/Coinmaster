@@ -1,4 +1,4 @@
-package me.nasiri.coinmaster.util
+package me.nasiri.coinmaster.domain.util
 
 import android.widget.ImageView
 import coil.load
@@ -8,5 +8,4 @@ class CoilImageLoader : Services.ImageLoader {
     override fun loader(url: String, view: ImageView) {
         view.load(url)
     }
-
 }

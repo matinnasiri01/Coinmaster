@@ -50,4 +50,4 @@ data class ChartData(
     )
 }
 
-fun ChartData.listOfClosePoints(): List<Double> = this.data.map { it.close }
+fun ChartData.convertToList(): List<Double> = this.data.map { it.close }

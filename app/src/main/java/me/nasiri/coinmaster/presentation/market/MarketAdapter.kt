@@ -1,4 +1,4 @@
-package me.nasiri.coinmaster.ui.adapter
+package me.nasiri.coinmaster.presentation.market
 
 import android.view.LayoutInflater
 import android.view.View

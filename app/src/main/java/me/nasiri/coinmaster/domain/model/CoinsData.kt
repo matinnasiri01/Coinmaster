@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import me.nasiri.coinmaster.util.Constans.TableCoin
+import me.nasiri.coinmaster.domain.util.Constans.TableCoin
 
 data class CoinsData(
     @SerializedName("Data")

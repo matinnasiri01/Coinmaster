@@ -6,7 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 import me.nasiri.coinmaster.domain.model.FCoinData
-import me.nasiri.coinmaster.util.Constans.TableCoin
+import me.nasiri.coinmaster.domain.util.Constans.TableCoin
 
 
 @Dao

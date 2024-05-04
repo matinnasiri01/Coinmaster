@@ -4,7 +4,7 @@ package me.nasiri.coinmaster.domain.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import me.nasiri.coinmaster.util.Constans.TableNews
+import me.nasiri.coinmaster.domain.util.Constans.TableNews
 
 data class NewsData(
     @SerializedName("Data")
@@ -63,11 +63,11 @@ data class NewsData(
     class RateLimit
 }
 
-fun NewsData.lConvert(): List<CusNews> =
-    this.data.map { CusNews(title = it.title, url = it.url, id = it.id.toLong()) }
+fun NewsData.lConvert(): List<FNews> =
+    this.data.map { FNews(title = it.title, url = it.url, id = it.id.toLong()) }
 
 @Entity(tableName = TableNews)
-data class CusNews(
+data class FNews(
     @PrimaryKey(autoGenerate = true)
     val id: Long?,
     val title: String,

@@ -1,4 +1,4 @@
-package me.nasiri.coinmaster.ui.coin
+package me.nasiri.coinmaster.presentation.coin
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

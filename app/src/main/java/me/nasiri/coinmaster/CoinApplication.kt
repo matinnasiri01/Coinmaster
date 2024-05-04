@@ -5,11 +5,11 @@ import me.nasiri.coinmaster.di.CenterModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class App : Application() {
+class CoinApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
-            androidContext(this@App)
+            androidContext(this@CoinApplication)
             modules(CenterModule)
         }
     }
