@@ -1,6 +1,9 @@
 package me.nasiri.coinmaster.domain.util
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,4 +22,10 @@ fun setColor(input: Double): Int = when {
     input > 0 -> R.color.colorGain
     input < 0 -> R.color.colorLoss
     else -> R.color.secondaryTextColor
+}
+
+fun View.lunch(url: String) {
+    this.setOnClickListener {
+        this.context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+    }
 }

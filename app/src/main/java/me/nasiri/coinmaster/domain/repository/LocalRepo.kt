@@ -1,13 +1,12 @@
 package me.nasiri.coinmaster.domain.repository
 
-import kotlinx.coroutines.flow.Flow
 import me.nasiri.coinmaster.domain.model.FCoinData
 import me.nasiri.coinmaster.domain.model.FNews
 
 interface LocalRepo {
-    fun getNews(): Flow<List<FNews>>
+    suspend fun getNews(): List<FNews>
 
-    fun getCoins(): Flow<List<FCoinData>>
+    suspend fun getCoins(): List<FCoinData>
 
     suspend fun insertNews(list: List<FNews>)
 

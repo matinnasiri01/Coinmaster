@@ -3,7 +3,7 @@ package me.nasiri.coinmaster.data.remote
 import me.nasiri.coinmaster.domain.model.ChartData
 import me.nasiri.coinmaster.domain.model.CoinsData
 import me.nasiri.coinmaster.domain.model.NewsData
-import me.nasiri.coinmaster.domain.util.Constans.API_KEYS
+import me.nasiri.coinmaster.domain.util.Constants.API_KEYS
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path

@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import me.nasiri.coinmaster.domain.util.Constans.TableCoin
+import me.nasiri.coinmaster.domain.util.Constants.TABLECOIN
 
 data class CoinsData(
     @SerializedName("Data")
@@ -334,7 +334,7 @@ fun List<FCoinData>.convertSCoinData(): List<SCoinData> {
     }
 }
 
-@Entity(tableName = TableCoin)
+@Entity(tableName = TABLECOIN)
 data class FCoinData(
     @PrimaryKey(autoGenerate = true)
     val id: Long? = null,

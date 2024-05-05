@@ -63,9 +63,9 @@ fun CoinsAboutData.convertUI(): List<CoinAboutData> {
 }
 
 data class CoinAboutData(
-    var coinWebsite: String?,
-    var coinGithub: String?,
-    var coinTwitter: String?,
-    var coinDes: String?,
-    var coinReddit: String?,
+    var coinWebsite: String? = null,
+    var coinGithub: String? = null,
+    var coinTwitter: String? = null,
+    var coinDes: String? = null,
+    var coinReddit: String? = null,
 )

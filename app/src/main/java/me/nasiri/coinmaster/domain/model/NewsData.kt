@@ -4,7 +4,7 @@ package me.nasiri.coinmaster.domain.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import me.nasiri.coinmaster.domain.util.Constans.TableNews
+import me.nasiri.coinmaster.domain.util.Constants.TABLENEWS
 
 data class NewsData(
     @SerializedName("Data")
@@ -66,7 +66,7 @@ data class NewsData(
 fun NewsData.lConvert(): List<FNews> =
     this.data.map { FNews(title = it.title, url = it.url, id = it.id.toLong()) }
 
-@Entity(tableName = TableNews)
+@Entity(tableName = TABLENEWS)
 data class FNews(
     @PrimaryKey(autoGenerate = true)
     val id: Long?,
