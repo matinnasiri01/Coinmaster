@@ -26,16 +26,18 @@ class CenterRepoImpl(
     private val remote: RemoteRepo,
 ) : CenterRepo {
     override suspend fun getNewsData(): Resource<List<FNews>> {
+        val data = local.getNews()
         return try {
-            Resource.Success(local.getNews())
+            if (data.isNotEmpty()) Resource.Success(data) else Resource.Error("Data Is Empty!")
         } catch (e: Exception) {
             Resource.Error(message = e.message)
         }
     }
 
     override suspend fun getCoinsData(): Resource<List<SCoinData>> {
+        val data = local.getCoins().convertSCoinData()
         return try {
-            Resource.Success(local.getCoins().convertSCoinData())
+            if (data.isNotEmpty()) Resource.Success(data) else Resource.Error("Data Is Empty!")
         } catch (e: Exception) {
             Resource.Error(message = e.message)
         }

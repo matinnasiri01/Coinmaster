@@ -23,12 +23,14 @@ class MarketActivity : AppCompatActivity() {
         binding = ActivityMarketBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        /* todo make as service and launch when local is empty */
+        viewModel.refresh()
 
         // News ~> trash Code
         val text = binding.newsMarket.txtNews
         val image = binding.newsMarket.imgNews
         viewModel.news {
-            val pos = Random.nextInt(it.size)
+            val pos = Random.nextInt(it.size - 1)
             val (_, title, url) = it[pos]
             text.text = title
             image.lunch(url)
@@ -40,13 +42,6 @@ class MarketActivity : AppCompatActivity() {
         val buttonMore = binding.resMarket.btnMore
         recycler.setAdapter { adapter }
         buttonMore.lunch(REFKEY)
-        viewModel.coins {
-            adapter.submitList(it)
-        }
-
-
-        viewModel.testabout(this)
-
-
+        viewModel.coins { adapter.submitList(it) }
     }
 }
