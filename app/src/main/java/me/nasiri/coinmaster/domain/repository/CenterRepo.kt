@@ -20,7 +20,4 @@ interface CenterRepo {
 
     suspend fun refresh()
 
-
-    /* todo make another function for this interface*/
-
 }

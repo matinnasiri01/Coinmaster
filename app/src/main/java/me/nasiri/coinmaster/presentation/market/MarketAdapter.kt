@@ -17,7 +17,8 @@ import org.koin.core.component.inject
 
 class MarketAdapter : RecyclerView.Adapter<MarketAdapter.MarketViewHolder>(), KoinComponent {
     private var items: List<SCoinData> = emptyList()
-    private var isLoading: Boolean = true
+    private val isLoading: Boolean
+        get() = items.isEmpty()
     private val image by inject<Services.ImageLoader>()
 
     private lateinit var binding: ItemMarketNormalBinding
@@ -51,7 +52,7 @@ class MarketAdapter : RecyclerView.Adapter<MarketAdapter.MarketViewHolder>(), Ko
         return MarketViewHolder(view.root)
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = if (isLoading) 10 else items.size
 
 
     override fun getItemViewType(position: Int): Int =
@@ -59,12 +60,11 @@ class MarketAdapter : RecyclerView.Adapter<MarketAdapter.MarketViewHolder>(), Ko
 
 
     override fun onBindViewHolder(holder: MarketViewHolder, position: Int) {
-        holder.bind(items[position])
+        if (!isLoading) holder.bind(items[position])
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun submitList(list: List<SCoinData>) {
-        isLoading = false
         items = list
         notifyDataSetChanged()
     }

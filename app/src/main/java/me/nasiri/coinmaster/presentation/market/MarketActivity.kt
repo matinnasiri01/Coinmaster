@@ -24,7 +24,11 @@ class MarketActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         /* todo make as service and launch when local is empty */
-        viewModel.refresh()
+        binding.swiper.setOnRefreshListener {
+            viewModel.refresh()
+            binding.swiper.isRefreshing = false
+
+        }
 
         // News ~> trash Code
         val text = binding.newsMarket.txtNews
