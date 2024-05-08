@@ -28,7 +28,8 @@ class MarketViewModel(private val repo: CenterRepo) : ViewModel() {
             when (val res = repo.getNewsData()) {
                 is Resource.Success -> {
                     res.data!!.collect {
-                        dataCall(it)
+                        if (it.isNotEmpty())
+                            dataCall(it)
                     }
                 }
 
@@ -43,7 +44,8 @@ class MarketViewModel(private val repo: CenterRepo) : ViewModel() {
             when (val res = repo.getCoinsData()) {
                 is Resource.Success -> {
                     res.data!!.collect {
-                        dataCall(it.convertSCoinData())
+                        if (it.isNotEmpty())
+                            dataCall(it.convertSCoinData())
                     }
                 }
 
