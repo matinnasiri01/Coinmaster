@@ -11,34 +11,24 @@ import me.nasiri.coinmaster.domain.model.FNews
 import me.nasiri.coinmaster.domain.repository.CenterRepo
 import me.nasiri.coinmaster.domain.repository.LocalRepo
 import me.nasiri.coinmaster.domain.repository.RemoteRepo
-import me.nasiri.coinmaster.domain.util.Errors
-import me.nasiri.coinmaster.domain.util.Resource
 
 class CenterRepoImpl(
     private val internet: Services.NetworkConnectionStatus,
     private val local: LocalRepo,
     private val remote: RemoteRepo,
 ) : CenterRepo {
-    override suspend fun getNewsData(): Resource<Flow<List<FNews>>> {
-        return try {
-            Resource.Success(local.getNews())
-        } catch (e: Exception) {
-            Resource.Error(Errors.OTHER)
-        }
+    override suspend fun getNewsData(): Flow<List<FNews>> {
+        return local.getNews()
     }
 
-    override suspend fun getCoinsData(): Resource<Flow<List<FCoinData>>> {
-        return try {
-            Resource.Success(local.getCoins())
-        } catch (e: Exception) {
-            Resource.Error(Errors.OTHER)
-        }
+    override suspend fun getCoinsData(): Flow<List<FCoinData>> {
+        return local.getCoins()
     }
 
     override suspend fun searchAboutCoinByName(
         context: Context,
         coinName: String,
-    ): Resource<CoinAboutData> {
+    ): CoinAboutData? {
         val file = context.assets
             .open("currencyinfo.json")
             .bufferedReader()
@@ -49,21 +39,19 @@ class CenterRepoImpl(
         return try {
             response.forEach {
                 if (it.currencyName == coinName) {
-                    Resource.Success(
-                        CoinAboutData(
-                            coinWebsite = it.info!!.web,
-                            coinGithub = it.info.github,
-                            coinTwitter = it.info.twt,
-                            coinDes = it.info.desc,
-                            coinReddit = it.info.reddit
-                        )
+                    CoinAboutData(
+                        coinWebsite = it.info!!.web,
+                        coinGithub = it.info.github,
+                        coinTwitter = it.info.twt,
+                        coinDes = it.info.desc,
+                        coinReddit = it.info.reddit
                     )
-                    return Resource.Error(Errors.FOUND)
+                    return null
                 }
             }
-            return Resource.Error(Errors.FOUND)
+            return null
         } catch (e: Exception) {
-            Resource.Error(Errors.OTHER)
+            null
         }
     }
 

@@ -26,7 +26,7 @@ class MarketActivity : AppCompatActivity() {
 
         /* todo make as service and launch when local is empty */
         binding.swiper.setOnRefreshListener {
-            viewModel.refresh()
+//            viewModel.refresh()
             binding.swiper.isRefreshing = false
 
         }
@@ -34,12 +34,12 @@ class MarketActivity : AppCompatActivity() {
         // News ~> trash Code
         val text = binding.newsMarket.txtNews
         val image = binding.newsMarket.imgNews
-        viewModel.news {
-            val pos = Random.nextInt(it.size - 1)
-            val (_, title, url) = it[pos]
-            text.text = title
-            image.lunch(url)
-        }
+//        viewModel.news {
+//            val pos = Random.nextInt(it.size - 1)
+//            val (_, title, url) = it[pos]
+//            text.text = title
+//            image.lunch(url)
+//        }
 
 
         // Coins ~> trash Code
@@ -47,6 +47,6 @@ class MarketActivity : AppCompatActivity() {
         val buttonMore = binding.resMarket.btnMore
         recycler.setAdapter { adapter }
         buttonMore.lunch(REFKEY)
-        viewModel.coins { adapter.submitList(it) }
+//        viewModel.coins { adapter.submitList(it) }
     }
 }
