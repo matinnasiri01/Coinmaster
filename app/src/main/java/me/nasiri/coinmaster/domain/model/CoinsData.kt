@@ -337,7 +337,7 @@ fun List<FCoinData>.convertSCoinData(): List<SCoinData> {
 
 @Entity(tableName = TABLECOIN)
 data class FCoinData(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     val id: Long? = null,
     val img: String? = null,
     val coinName: String? = null,

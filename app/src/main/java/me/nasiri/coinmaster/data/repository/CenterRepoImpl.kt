@@ -21,7 +21,7 @@ class CenterRepoImpl(
         return local.getNews()
     }
 
-    override suspend fun getCoinsData(): Flow<List<FCoinData>> {
+    override suspend fun getFCoinsData(): Flow<List<FCoinData>> {
         return local.getCoins()
     }
 

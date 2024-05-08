@@ -68,7 +68,7 @@ fun NewsData.lConvert(): List<FNews> =
 
 @Entity(tableName = TABLENEWS)
 data class FNews(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     val id: Long?,
     val title: String,
     val url: String,
