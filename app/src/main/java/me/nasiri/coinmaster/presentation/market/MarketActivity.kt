@@ -10,6 +10,7 @@ import me.nasiri.coinmaster.domain.util.setAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.random.Random
 
+
 class MarketActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMarketBinding
     private val viewModel by viewModel<MarketViewModel>()

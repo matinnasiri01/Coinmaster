@@ -13,7 +13,7 @@ import me.nasiri.coinmaster.domain.util.Constants.TABLECOIN
 interface CoinsDao {
 
     @Query("SELECT * FROM $TABLECOIN")
-    suspend fun getCoins(): List<FCoinData>
+    fun getCoins(): Flow<List<FCoinData>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCoins(list: List<FCoinData>)

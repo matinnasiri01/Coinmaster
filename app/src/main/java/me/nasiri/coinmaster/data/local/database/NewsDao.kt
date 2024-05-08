@@ -13,7 +13,7 @@ import me.nasiri.coinmaster.domain.util.Constants.TABLENEWS
 interface NewsDao {
 
     @Query("SELECT * FROM $TABLENEWS")
-    suspend fun getNews(): List<FNews>
+    fun getNews(): Flow<List<FNews>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNews(list: List<FNews>)
