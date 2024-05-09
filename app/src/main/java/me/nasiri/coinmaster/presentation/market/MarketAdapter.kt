@@ -1,6 +1,5 @@
 package me.nasiri.coinmaster.presentation.market
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,10 +62,8 @@ class MarketAdapter : RecyclerView.Adapter<MarketAdapter.MarketViewHolder>(), Ko
         if (!isLoading) holder.bind(items[position])
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun submitList(list: List<SCoinData>) {
         items = list
-        notifyDataSetChanged()
     }
 
     companion object {

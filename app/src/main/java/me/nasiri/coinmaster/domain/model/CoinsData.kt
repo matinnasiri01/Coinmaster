@@ -2,11 +2,13 @@ package me.nasiri.coinmaster.domain.model
 
 
 import android.os.Parcelable
+import android.util.Log
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import me.nasiri.coinmaster.domain.util.Constants.TABLECOIN
+import me.nasiri.coinmaster.domain.util.Constants.TAG
 
 data class CoinsData(
     @SerializedName("Data")
@@ -304,6 +306,7 @@ data class CoinsData(
 fun CoinsData.fConvert(): List<FCoinData> {
     return this.data.map { coin ->
         FCoinData(
+            id = coin.coinInfo.id.toLong(),
             img = coin.coinInfo.imageUrl,
             coinName = coin.coinInfo.name,
             change = coin.dISPLAY.uSD.cHANGEPCTHOUR,

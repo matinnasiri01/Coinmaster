@@ -50,11 +50,11 @@ class MarketActivity : AppCompatActivity() {
         // Coins ~> trash Code
         val recycler = binding.resMarket.recyclerItemMarket
         val buttonMore = binding.resMarket.btnMore
-        recycler.setAdapter { adapter }
         buttonMore.lunch(REFKEY)
+        recycler.setAdapter { adapter }
         viewModel.coins.observe(this) {
             adapter.submitList(it)
-            Log.i(TAG, it.toString())
+            recycler.setAdapter { adapter }
         }
     }
 }
