@@ -25,6 +25,7 @@ class MarketAdapter : RecyclerView.Adapter<MarketAdapter.MarketViewHolder>(), Ko
 
     inner class MarketViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         fun bind(item: SCoinData) {
+            if (item.coinName.isNullOrEmpty()) return
             binding.apply {
                 image.loader(BASE_URL_IMAG + item.img!!, imgItem)
                 txtCoinName.text = item.coinName

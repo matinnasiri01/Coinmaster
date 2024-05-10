@@ -23,7 +23,7 @@ class MarketViewModel(private val repo: CenterRepo) : ViewModel() {
     val refresh: Unit
         get() {
             viewModelScope.launch {
-                Log.d(TAG, "Refreshing!*")
+                Log.i(TAG, "Refreshing!*")
                 repo.refresh()
             }
         }

@@ -305,23 +305,25 @@ data class CoinsData(
 
 fun CoinsData.fConvert(): List<FCoinData> {
     return this.data.map { coin ->
-        FCoinData(
-            id = coin.coinInfo.id.toLong(),
-            img = coin.coinInfo.imageUrl,
-            coinName = coin.coinInfo.name,
-            change = coin.dISPLAY.uSD.cHANGEPCTHOUR,
-            price = coin.dISPLAY.uSD.pRICE,
-            fullName = coin.coinInfo.fullName,
-            open = coin.dISPLAY.uSD.oPEN24HOUR,
-            todayHigh = coin.dISPLAY.uSD.hIGH24HOUR,
-            todayLow = coin.dISPLAY.uSD.lOW24HOUR,
-            changeToday = coin.dISPLAY.uSD.cHANGE24HOUR,
-            algorithm = coin.coinInfo.algorithm,
-            totalVolume = coin.dISPLAY.uSD.tOTALVOLUME24H,
-            marketCap = coin.dISPLAY.uSD.mKTCAP,
-            supply = coin.dISPLAY.uSD.sUPPLY
-        )
-    }
+        if (coin.dISPLAY == null) FCoinData() else {
+            FCoinData(
+                id = coin.coinInfo.id.toLong(),
+                img = coin.coinInfo.imageUrl,
+                coinName = coin.coinInfo.name,
+                change = coin.dISPLAY.uSD.cHANGEPCTHOUR,
+                price = coin.dISPLAY.uSD.pRICE,
+                fullName = coin.coinInfo.fullName,
+                open = coin.dISPLAY.uSD.oPEN24HOUR,
+                todayHigh = coin.dISPLAY.uSD.hIGH24HOUR,
+                todayLow = coin.dISPLAY.uSD.lOW24HOUR,
+                changeToday = coin.dISPLAY.uSD.cHANGE24HOUR,
+                algorithm = coin.coinInfo.algorithm,
+                totalVolume = coin.dISPLAY.uSD.tOTALVOLUME24H,
+                marketCap = coin.dISPLAY.uSD.mKTCAP,
+                supply = coin.dISPLAY.uSD.sUPPLY
+            )
+        }
+    }.filter { !it.coinName.isNullOrEmpty() }
 }
 
 fun List<FCoinData>.convertSCoinData(): List<SCoinData> {
