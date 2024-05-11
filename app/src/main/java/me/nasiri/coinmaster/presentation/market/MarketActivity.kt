@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import me.nasiri.coinmaster.R
 import me.nasiri.coinmaster.databinding.ActivityMarketBinding
 import me.nasiri.coinmaster.domain.util.Constants.REFKEY
 import me.nasiri.coinmaster.domain.util.Constants.SHARE
@@ -36,12 +37,15 @@ class MarketActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         /* todo make as service and launch when local is empty */
-        binding.swiper.setOnRefreshListener {
-            viewModel.refresh
-            binding.swiper.isRefreshing = false
+        binding.swiper.apply {
+           setProgressBackgroundColorSchemeResource(R.color.backgroundColor)
+            setOnRefreshListener {
+                viewModel.refresh
+                binding.swiper.isRefreshing = false
+
+            }
 
         }
-
         // News ~> trash Code
         val text = binding.newsMarket.txtNews
         val image = binding.newsMarket.imgNews
