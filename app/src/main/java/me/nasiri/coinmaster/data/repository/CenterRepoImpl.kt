@@ -25,7 +25,13 @@ class CenterRepoImpl(
         return local.getCoins()
     }
 
-    override suspend fun searchAboutCoinByName(
+    override suspend fun findCoinByID(id: Long, call: (FCoinData) -> Unit) {
+        return getFCoinsData().collect { list ->
+            call(list.find { it.id == id }!!)
+        }
+    }
+
+    override suspend fun findAboutCoinByName(
         context: Context,
         coinName: String,
     ): CoinAboutData? {

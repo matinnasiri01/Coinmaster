@@ -14,7 +14,8 @@ import me.nasiri.coinmaster.domain.util.setColor
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class MarketAdapter : RecyclerView.Adapter<MarketAdapter.MarketViewHolder>(), KoinComponent {
+class MarketAdapter(private val events: MarketEvents) :
+    RecyclerView.Adapter<MarketAdapter.MarketViewHolder>(), KoinComponent {
     private var items: List<SCoinData> = emptyList()
     private val isLoading: Boolean
         get() = items.isEmpty()
@@ -25,10 +26,19 @@ class MarketAdapter : RecyclerView.Adapter<MarketAdapter.MarketViewHolder>(), Ko
 
     inner class MarketViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         fun bind(item: SCoinData) {
-            if (item.coinName.isNullOrEmpty()) return
+            itemView.setOnClickListener { events.onCoinClick(item.id!!) }
             binding.apply {
+
                 image.loader(BASE_URL_IMAG + item.img!!, imgItem)
-                txtCoinName.text = item.coinName
+
+                txtCoinName.text = item.fullName
+
+                textLess.text = item.coinName
+
+                txtMarketCap.text = item.marketCap
+
+                txtPrice.text = item.price
+
                 txtChanges.text = item.change
                 txtChanges.setTextColor(
                     ContextCompat.getColor(
@@ -36,8 +46,6 @@ class MarketAdapter : RecyclerView.Adapter<MarketAdapter.MarketViewHolder>(), Ko
                         setColor(item.change!!.toDouble())
                     )
                 )
-                txtMarketCap.text = item.marketCap
-                txtPrice.text = item.price
             }
         }
     }
@@ -71,4 +79,8 @@ class MarketAdapter : RecyclerView.Adapter<MarketAdapter.MarketViewHolder>(), Ko
         private const val VIEW_TYPE_SHIMMER = 1
         private const val VIEW_TYPE_NORMAL = 2
     }
+}
+
+interface MarketEvents {
+    fun onCoinClick(id: Long)
 }

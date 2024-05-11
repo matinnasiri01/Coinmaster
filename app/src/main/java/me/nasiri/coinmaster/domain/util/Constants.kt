@@ -4,8 +4,8 @@ package me.nasiri.coinmaster.domain.util
 object Constants {
 
     const val TAG = "REVIEW"
-        const val NOTEMPTY = "not Empty"
-        const val EMPTY = "Empty"
+    const val SHARE = "Share"
+    const val EMPTY = "Empty"
     const val REFKEY = "https://bitpin.ir/signup/?ref=pLsU8zTF"
 
     // ROOM

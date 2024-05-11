@@ -63,6 +63,6 @@ val CenterModule = module {
 
 
     viewModel { MarketViewModel(get<CenterRepo>()) }
-    viewModel { CoinViewModel() }
+    viewModel { CoinViewModel(get<CenterRepo>()) }
 
 }

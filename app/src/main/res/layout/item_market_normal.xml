@@ -31,9 +31,9 @@
         android:text="BTC"
         app:layout_constraintStart_toEndOf="@+id/img_item"
         app:layout_constraintTop_toTopOf="parent" />
-
+d
     <TextView
-        android:id="@+id/txtDollar"
+        android:id="@+id/textLess"
         style="@style/CoinBitText.Body1Alternate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,9 +59,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="$3.185"
-        app:layout_constraintBottom_toBottomOf="@+id/txtDollar"
+        app:layout_constraintBottom_toBottomOf="@+id/textLess"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txtDollar" />
+        app:layout_constraintTop_toTopOf="@+id/textLess" />
 
     <TextView
         android:id="@+id/txtMarketCap"

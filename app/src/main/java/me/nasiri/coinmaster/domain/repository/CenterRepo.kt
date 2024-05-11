@@ -5,7 +5,6 @@ import kotlinx.coroutines.flow.Flow
 import me.nasiri.coinmaster.domain.model.CoinAboutData
 import me.nasiri.coinmaster.domain.model.FCoinData
 import me.nasiri.coinmaster.domain.model.FNews
-import me.nasiri.coinmaster.domain.model.SCoinData
 
 
 interface CenterRepo {
@@ -15,7 +14,9 @@ interface CenterRepo {
     suspend fun getFCoinsData(): Flow<List<FCoinData>>
 
 
-    suspend fun searchAboutCoinByName(context: Context, coinName: String): CoinAboutData?
+    suspend fun findCoinByID(id: Long, call: (FCoinData) -> Unit)
+
+    suspend fun findAboutCoinByName(context: Context, coinName: String): CoinAboutData?
 
     suspend fun refresh()
 

@@ -24,6 +24,14 @@ fun setColor(input: Double): Int = when {
     else -> R.color.secondaryTextColor
 }
 
+
+fun setRes(input: Double): Int = when {
+    input > 0 -> R.drawable.ic_tre_up
+    input < 0 -> R.drawable.ic_tre_dw
+    else -> R.drawable.ic_tre_zr
+}
+
+
 fun View.lunch(url: String) {
     this.setOnClickListener {
         this.context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
